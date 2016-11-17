@@ -1,0 +1,24 @@
+#
+# IMPORTANT! 
+#
+# You will need to make changes to this file based on your 
+# Apache and PHP configuration. This is a little technical but
+# there is nothing at the moment we can do about it.
+#
+# There are two ways to run PHP on most shared, VPS,and dedicated
+# hosts -- (a) mod_php and (b) CGI. The way this file is configured
+# is different depending on how your web server (Apache) is set up.
+#
+# There are two sections below - one for mod_php configurations
+# and one for CGI (which includes FastCGI, etc.) configs.
+# remove the comment markers ("#") for the config for your site.
+#
+
+
+# OPTION 1 - mod_php configurations
+# uncomment the line below
+#
+#php_value auto_prepend_file none
+
+# OPTION 2 - CGI configurations
+# no changes needed

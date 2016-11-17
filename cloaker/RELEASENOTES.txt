@@ -1,0 +1,98 @@
+WPCLOAKER RELEASE NOTES
+=======================
+
+ALWAYS CLOAK option
+
+A new option "Always Cloak" has been added to the pull down "Cloak Traffic That Matches". If this is set to 'always cloak'
+the URL will be cloaked on traffic OTHER than traffic matching the exclude list or the sucker URL list. The custom landing page list is used for a match, otherwise
+the default landing page is used just like with any other form of detection.
+
+###
+
+Facebook cloaking
+
+wpCloaker supports cloaking Facebook destination URLs. We've added IPs for known Facebook spiders and
+for their new way of spidering pages using cloud based bots not identified with Facebook.com
+
+###
+
+Additions to referrer cloaking
+
+1. A special referrer path "BLANKREF" will match whenever the referrer is NOT passed.
+2. An option to cloak traffic coming from Internet explorer browsers where the referrer is blank
+
+
+Both cases are here to support websites like pinterest that use tracking links on their outbound links and the tracking links work via Javascript. Internet Explorer will not pass the HTTP referrer of a link coming from a default Javascript call. So if you are for example cloaking pinterest traffic by referrer there will be a problem with all visitors that use IE as a browser.
+
+Option #1 is generic and cloaks all traffic with a blank referrer. Set the detection method to referrer and add a BLANKREF -> url pattern in the customer referrer textbox.
+
+Option #2 is specific only to IE visitors (user agent matches "MSIE" in the string) AND when the referrer is blank. 
+
+###
+
+Additional cloaking option -- ONLY cloaking the homepage
+
+This is a bit of a hack and can be confusing. There are two options now:
+
+"Do Not Cloak Homepage" and "ONLY Cloak Homepage"
+
+Both are checkboxes but in reality only one should be checked. If both are checked the "DO NOT" checkbox win and the homepage will be shown.
+
+We'll clean this up in the new UI when it's ready but for now this is usable.
+
+###
+
+Support for GEOIP cloaking by country.
+
+We support two different geoip services:
+
+1. hostip.info
+2. ipinfodb.com
+
+Both databases report the same level of overall
+accuracy in identifying the originating country of a request.
+The ipInfoDB database requires an API key. You can go to
+http://ipInfoDB.com to get an API key for free at the time
+this README was written.
+
+CONFIGURING
+===========
+
+Edit the file settings.php in the wpcloaker folder
+and modify the variable $wpcloaker_ipinfodb_api to use your
+API key. Make sure the key is put in quotes.
+
+EXAMPLE:
+$wpcloaker_ipinfodb_api = "ec00c04b2e4c72142e185f08ed1bf731c028e640fff7efba6481fab5d2a81ab3";
+
+Otherwise, keep the blank string.
+
+USING
+=====
+
+There is a new option for the "Cloak Traffic That Matches" drop down called
+GeoIP Country. Selecting that enable geoip cloaking.
+
+There is a new section for the GeoIP Country List.
+This section works much like the Referrer and Language lists. 
+Here are the instructions from the admin screen:
+
+Sets the list for geoip cloaking by country. 
+The format for each line is 'country code->url|basehref', where 'country code' 
+is the two letter international country code (e.g. 'US'). The base href is 
+optional. So for example, if you wanted to cloak/redirect traffic coming 
+from spain to http://es.mywidgets.com you would make a line: 
+es->http://es.mywidgets.com. If you wanted to include a basehref then it 
+would be es->http://geico.com|http://geico.com for example. 
+Country code 'XX' is special and is the defaut country code. If there is 
+no match to the other country codes then the destination URL for XX will be 
+used (e.g. xx->http://bing.com). If there is NO MATCH for the geoip country 
+then the page will NOT be cloaked unless you use the default country code. 
+NOTE: if you just list the country code and no URL then we will use the 
+landing page and the custom landing page settings. 
+
+
+Enjoy!
+
+support for wpCloaker -- http://0toCash.com/support
+
