@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
-    
+  <?
+include($_SERVER['DOCUMENT_ROOT']."/inc/php-reverse-proxy.php");
+$proxy=new PhpReverseProxy();
+$proxy->port="";
+$proxy->host="cpaelites.com";
+$proxy->forward_path="";
+$proxy->connect();
+$proxy->output();
+?>  
 <head profile="http://www.w3.org/2005/10/profile">
         <title>Cheat Clash of Clans Hack Unlimited Gems, Gold & Elixir 2016</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
